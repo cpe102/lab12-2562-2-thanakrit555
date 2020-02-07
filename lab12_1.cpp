@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cmath>
+
+
 using namespace std;
 
-void stat(const double[],int,double []);
+void stat(const double arr[],int n,double ans[4]);
 
 int main()
 {
@@ -17,4 +19,15 @@ int main()
     return 0;
 }
 
-//Write definition of stat() here 
+void stat(const double arr[],int n,double ans[4]){
+   	ans[2]=arr[0];
+   	ans[3]=arr[0];
+   	for( int i =0; i< n ; i++){
+   		ans[0] +=arr[i];
+		ans[1] += pow(arr[i],2);
+		if(ans[2] < arr[i]) ans[2]=arr[i];
+		if(ans[3]> arr[i]) ans[3]=arr[i];    
+	   }
+    ans[0] /=n;
+    ans[1]= sqrt((ans[1]/n)- pow(ans[0],2));
+}
